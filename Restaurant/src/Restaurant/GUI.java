@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
@@ -90,7 +90,7 @@ public class GUI {
          * Main GUI frame for the Restaurant application.
          */
         // Create GUI frame
-        JFrame frame = new JFrame("Hotel Toad GUI");
+        JFrame frame = new JFrame("Restaurant GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1920, 1080);
 
@@ -160,7 +160,7 @@ public class GUI {
          */
 
         // Load the hotel image and create a JLabel for the image
-        ImageIcon imageIcon = new ImageIcon("src/Hotel_Toad/images/hotel.png");
+        ImageIcon imageIcon = new ImageIcon("src/Restaurant/images/hotel.png");
         JLabel imageLabel = new JLabel(imageIcon);
        
         /**
@@ -288,7 +288,7 @@ public class GUI {
          * Logo label with predefined image and border styling.
          */
         //add logo
-        ImageIcon logo = new ImageIcon("src/Hotel_Toad/images/logo.png");
+        ImageIcon logo = new ImageIcon("src/Restaurant/images/logo.png");
         JLabel logoLabel = new JLabel(logo);
         Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
         logoLabel.setBorder(border);
@@ -319,10 +319,10 @@ public class GUI {
          * Loading images for different room types.
          */
         // Load images
-        ImageIcon P1 = new ImageIcon("src/Hotel_Toad/images/single.png");
-        ImageIcon P2 = new ImageIcon("src/Hotel_Toad/images/double.png");
-        ImageIcon P3 = new ImageIcon("src/Hotel_Toad/images/triple.png");
-        ImageIcon P4 = new ImageIcon("src/Hotel_Toad/images/suite.png");
+        ImageIcon P1 = new ImageIcon("src/Restaurant/images/single.png");
+        ImageIcon P2 = new ImageIcon("src/Restaurant/images/double.png");
+        ImageIcon P3 = new ImageIcon("src/Restaurant/images/triple.png");
+        ImageIcon P4 = new ImageIcon("src/Restaurant/images/suite.png");
 
        /**
          * Label for "Single Queen" title and its styling.
@@ -482,10 +482,10 @@ public class GUI {
          */
 
         // Load images
-        ImageIcon P1a = new ImageIcon("src/Hotel_Toad/images/pool.png");
-        ImageIcon P2a = new ImageIcon("src/Hotel_Toad/images/breakfast.jpg");
-        ImageIcon P3a = new ImageIcon("src/Hotel_Toad/images/fitnessRoom.png");
-        ImageIcon P4a = new ImageIcon("src/Hotel_Toad/images/golf.png");
+        ImageIcon P1a = new ImageIcon("src/Restaurant/images/pool.png");
+        ImageIcon P2a = new ImageIcon("src/Restaurant/images/breakfast.jpg");
+        ImageIcon P3a = new ImageIcon("src/Restaurant/images/fitnessRoom.png");
+        ImageIcon P4a = new ImageIcon("src/Restaurant/images/golf.png");
 
         /**
          * Configures a label, possibly for showing information about an outdoor pool.

@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 /**
  * Represents a hotel reservation with details about the guests, stay duration, and room type.

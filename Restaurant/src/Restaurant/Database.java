@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

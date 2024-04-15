@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 /**
  * Represents a Hotel_Toad.Room with a room number, room type, and availability status.

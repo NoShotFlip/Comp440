@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package Hotel_Toad;
+package Restaurant;
 
 /**
  * Represents a guest with associated personal details.
