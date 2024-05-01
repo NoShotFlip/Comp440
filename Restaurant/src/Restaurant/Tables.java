@@ -1,32 +1,32 @@
 package Restaurant;
 
 /**
- * Represents a Hotel_Toad.Room with a room number, room type, and availability status.
- * @author Toad's Taskforce
+ * Represents a Restaurant.Table with a table number, table type, and availability status.
+ * @author 
  * @version 1.0
  * <p>
- * Date of Creation: 28 July 2023
+ 
  * </p>
  *
  * <p>
  * This class provides a structure for managing and querying information related
- * to individual rooms in a hotel or similar establishment.
+ * to individual table in a restaurant or similar establishment.
  * </p>
  */
 public class Tables {
 
     /** The room number. */
     public int tableNum;
-    /** The type of the room, e.g., "single", "double", "suite". */
+    /** The type of the table, e.g., "single", "double", "suite". */
     private String tableType;
-    /** Indicates whether the room is currently available. */
+    /** Indicates whether the table is currently available. */
     public boolean availability;
 
     /**
-     * Constructs a new Hotel_Toad.Room with the specified room number, room type, and availability.
+     * Constructs a new Restaurant.Table with the specified table number, table type, and availability.
      *
-     * @param tableNum  the room's number.
-     * @param tableType    the room's type.
+     * @param tableNum  the table's number.
+     * @param tableType    the table's type.
      * @param availability whether the room is available.
      */
     public Tables(int tableNum, String tableType, boolean availability){
@@ -38,9 +38,9 @@ public class Tables {
     }
 
     /**
-     * Returns the room number.
+     * Returns the table number.
      *
-     * @return the room number.
+     * @return the table number.
      */
     public int getTableNumber() {
         return tableNum;
@@ -49,16 +49,16 @@ public class Tables {
     /**
      * Returns the type of the room.
      *
-     * @return the room type.
+     * @return the table type.
      */
     public String getTableType() {
         return tableType;
     }
 
     /**
-     * Checks if the room is available.
+     * Checks if the table is available.
      *
-     * @return true if the room is available, false otherwise.
+     * @return true if the table is available, false otherwise.
      */
     public boolean isAvailable(){
         return availability;

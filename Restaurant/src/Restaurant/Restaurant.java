@@ -5,86 +5,87 @@ import java.sql.SQLException;
 import javax.swing.JTextField;
 
 /**
- * Represents a hotel entity with functionalities encompassing room reservations and cancellations.
- * @author Toad's Taskforce
+ * Represents a restaurant  entity with functionalities encompassing table reservations and cancellations.
+ * @author 
  * @version 1.0
  * <p>
  * Date of Creation: 28 July 2023
  * </p>
  *
  * <p>
- * This class not only manages the in-memory representation of the hotel but also interfaces with a database
+ * This class not only manages the in-memory representation of the restaurant but also interfaces with a database
  * for persistent storage of reservation details.
  * </p>
  */
 public class Restaurant {
 
-    /** An array representing all the rooms in the hotel. */
+    /** An array representing all the table in the restaurant. */
     public static Tables[] tables;
 
     /**
-     * Constructs a new Hotel with the given rooms.
+     * Constructs a new restaurant with the given tables.
      *
-     * @param rooms the array of rooms that belong to this hotel.
+     * @param tables the array of tables that belong to this restaurant.
      */
     public Restaurant(Tables[] tables){
         this.tables = tables;
     }
 
     /**
-     * Processes a room reservation request for a guest. If successful, details of the reservation are returned.
-     * Otherwise, a null value indicates the absence of available rooms of the desired type.
+     * Processes a tables reservation request for a guest. If successful, details of the reservation are returned.
+     * Otherwise, a null value indicates the absence of available tables of the desired type.
      *
      * @param guest    the guest making the reservation.
-     * @param roomType the type of room desired by the guest.
+     * @param tableType the type of tables desired by the guest.
      * @param checkIn  the check-in date.
      * @param checkOut1String the check-out date.
      * @param email    the email of the guest.
      * @param bill     total billing details.
      *
-     * @return details of the reserved room or null if the desired room type is unavailable.
+     * @return details of the reserved tables or null if the desired tables type is unavailable.
      *
      * @throws ClassNotFoundException if there's an issue loading a database class.
      * @throws SQLException if there's a database access error.
      */
-    public static String reserveRoom(Guest guest, String roomType, String checkIn, String checkOut1String, String email, String bill) throws ClassNotFoundException, SQLException{
+    public static String reserveTable(Guest guest, String tableType, String checkIn, String checkOut1String, String email, String bill) throws ClassNotFoundException, SQLException{
         for (int i = 0; i < tables.length; i++){
-            if (tables[i].getTableType().equalsIgnoreCase(roomType) && tables[i].isAvailable()){
-                //rooms[i].availability = false;
-                return "Room Reservation Successful!" +
+            if (tables[i].getTableType().equalsIgnoreCase(tableType) && tables[i].isAvailable()){
+               
+                return "Table Reservation Successful!" +
                         "\nGuest Name: " + guest.getFirstName() + " " + guest.getLastName() + " "
-                        + "\nGuest Email: " + guest.getEmail()  +"\nRoom Type: " + roomType + "\nRoom number: "
-                        + tables[i].getTableNumber() + "\nCheck-in: " + checkIn + "\nCheck-out: " + checkOut1String + bill
-                        + "\nDon't forget your room number if you want to cancel your reservation!";
+                        + "\nGuest Email: " + guest.getEmail()  +"\nTable Type: " + tableType + "\tTable number: "
+                        + tables[i].getTableNumber() + "\nDate: " + checkIn + "\nTime: " + checkOut1String 
+                        + "\nDon't forget your table number if you want to cancel your reservation!";
             }
         }
         return null;
     }
 
     /**
-     * Handles room reservation and simultaneously updates the database to reflect these changes.
+     * Handles table reservation and simultaneously updates the database to reflect these changes.
      *
      * @param guest    details of the guest requesting the reservation.
-     * @param roomType the kind of room the guest desires.
+     * @param tableType the kind of table the guest desires.
      * @param checkIn  intended check-in date.
      * @param checkOut1String intended check-out date.
      * @param email    contact email of the guest.
+     * @param message1String 
      *
      * @throws ClassNotFoundException if there's an issue connecting with the database driver.
      * @throws SQLException if there's an issue accessing the database.
      */
-    public static void reserveRoom1(Guest guest, String roomType, String checkIn, String checkOut1String, String email) throws ClassNotFoundException, SQLException{
+    public static void reserveTable1(Guest guest, String tableType, String checkIn, String checkOut1String, String email, String message1String) throws ClassNotFoundException, SQLException{
         for (int i = 0; i < tables.length; i++){
-            if (tables[i].getTableType().equalsIgnoreCase(roomType) && tables[i].isAvailable()){
+            if (tables[i].getTableType().equalsIgnoreCase(tableType) && tables[i].isAvailable()){
                 tables[i].availability = false;
                 
-                int roomNumber = tables[i].getTableNumber();
+                int tableNumber = tables[i].getTableNumber();
                 //Calls addtoCustomerDetails from DataBase class to store the information
-                Database.addtoCustomerDetails(guest.getFirstName(), guest.getLastName(), email, roomNumber);
+                Database.addtoCustomerDetails(guest.getFirstName(), guest.getLastName(), email, tableNumber,message1String);
                 //Calls addBooking from DataBase class to store the information
-                Database.addBooking(roomNumber,checkIn,checkOut1String);
+                Database.addBooking(tableNumber,checkIn,checkOut1String);
                 //Calls updateRoomAvailability from DataBase class to store the information
-                Database.updateRoomAvailability(roomNumber);
+                Database.updateTableAvailability(tableNumber);
                 return;
             }
         }
@@ -92,29 +93,29 @@ public class Restaurant {
     }
 
     /**
-     * Cancels an existing room reservation and updates the database to reflect the room's availability.
+     * Cancels an existing table reservation and updates the database to reflect the table's availability.
      *
-     * @param roomNumber the specific number of the room whose reservation needs cancellation.
+     * @param tableNumber the specific number of the table whose reservation needs cancellation.
      *
      * @return a message indicating whether the cancellation was successful or not.
      *
      * @throws ClassNotFoundException if there's an issue connecting with the database driver.
      * @throws SQLException if there's an issue accessing the database.
      */
-    public static String cancelRoom(int roomNumber) throws ClassNotFoundException, SQLException{
+    public static String cancelTable(int tableNumber) throws ClassNotFoundException, SQLException{
         String message;
         for (int i = 0; i < tables.length; i++){
-            if (tables[i].getTableNumber() == roomNumber && !tables[i].isAvailable()) {
-                // Mark room as available;
+            if (tables[i].getTableNumber() == tableNumber && !tables[i].isAvailable()) {
+                // Mark table as available;
                 tables[i].availability = true;
 
                 // Update database to reflect cancellation
                 //Calls deleteCustomerDetails from DataBase class to delete in the Database
-                Database.deleteCustomerDetails(roomNumber);
+                Database.deleteCustomerDetails(tableNumber);
                 //Calls nowAvailabe from DataBase class to Updates in the Database
-                Database.nowAvailable(roomNumber);
+                Database.nowAvailable(tableNumber);
                 //Calls deleteBooking from DataBase class to delete in the Database
-                Database.deleteBooking(roomNumber);
+                Database.deleteBooking(tableNumber);
                 message = "Reservation Canceled!";
                 return message;
             }

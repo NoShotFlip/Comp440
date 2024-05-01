@@ -5,11 +5,11 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 /**
- * Provides utilities for interacting with the hotel reservation database.
- * @author Toad's Taskforce
+ * Provides utilities for interacting with the restaurant reservation database.
+ * @author 
  * @version 1.0
  * <p>
- * Date of Creation: 28 July 2023
+
  * </p>
  */
 public class Database {
@@ -63,17 +63,17 @@ public class Database {
      * @param firstName The first name of the customer.
      * @param lastName The last name of the customer.
      * @param email The email of the customer.
-     * @param number The room number of the customer.
+     * @param number The table number of the customer.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */
-    static void addtoCustomerDetails(String firstName, String lastName ,String email, int number ) throws ClassNotFoundException, SQLException{
+    static void addtoCustomerDetails(String firstName, String lastName ,String email, int number ,String messageString) throws ClassNotFoundException, SQLException{
         
         String url = "jdbc:mysql://restaurant-database.cxhswfveunmf.us-west-1.rds.amazonaws.com:3306/Hotel_Reservation";
         String username = "admin"; // MySQL credentials
         String password = "01NoShotFlip$";
          String query
-            = "insert into Customer_Details(TableNum,First_Name,Last_Name,Email) "+"values (?, ?, ?, ?)"; // query to be run
+            = "insert into Customer_Details(TableNum,First_Name,Last_Name,Email,Message) "+"values (?, ?, ?, ?, ?)"; // query to be run
         Class.forName(
             "com.mysql.cj.jdbc.Driver"); // Driver name
         Connection con = DriverManager.getConnection(
@@ -85,6 +85,7 @@ public class Database {
         preparedStmt.setString (2, firstName);
         preparedStmt.setString (3, lastName);
         preparedStmt.setString (4, email);
+        preparedStmt.setString(5, messageString);
         preparedStmt.execute();
         
         //ResultSet rs
@@ -96,7 +97,7 @@ public class Database {
     }
 
     /**
-     * Deletes customer details associated with the provided room number.
+     * Deletes customer details associated with the provided table number.
      *
      * @param tableNum The table number of the customer to be deleted.
      * @throws ClassNotFoundException if the database driver is not found.
@@ -119,13 +120,13 @@ public class Database {
     }
 
     /**
-     * Retrieves room availability from the database and constructs a table model with this data.
+     * Retrieves table availability from the database and constructs a table model with this data.
      *
-     * @return the constructed table model with room availability details.
+     * @return the constructed table model with table availability details.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */
-    public static DefaultTableModel getRoomAvailabilityModel() throws ClassNotFoundException, SQLException {
+    public static DefaultTableModel getTableAvailabilityModel() throws ClassNotFoundException, SQLException {
             String url = "jdbc:mysql://restaurant-database.cxhswfveunmf.us-west-1.rds.amazonaws.com:3306/Hotel_Reservation";
             String username = "admin";
             String password = "01NoShotFlip$";
@@ -162,13 +163,13 @@ public class Database {
         }
 
     /**
-     * Updates room availability in the database to 'Not Available' for the specified room number.
+     * Updates table availability in the database to 'Not Available' for the specified table number.
      *
-     * @param number The room number to be updated.
+     * @param number The table number to be updated.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */
-    static void updateRoomAvailability(int number) throws SQLException, ClassNotFoundException{
+    static void updateTableAvailability(int number) throws SQLException, ClassNotFoundException{
         
         String url = "jdbc:mysql://restaurant-database.cxhswfveunmf.us-west-1.rds.amazonaws.com:3306/Hotel_Reservation";
         String  username = "admin"; // MySQL credentials
@@ -188,13 +189,13 @@ public class Database {
     }
 
     /**
-     * Updates room availability in the database to 'Available' for the specified room number.
+     * Updates table availability in the database to 'Available' for the specified table number.
      *
-     * @param roomNum The room number to be updated.
+     * @param tableNum The table number to be updated.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */
-    static void nowAvailable(int roomNum) throws ClassNotFoundException, SQLException{
+    static void nowAvailable(int tableNum) throws ClassNotFoundException, SQLException{
         String url = "jdbc:mysql://restaurant-database.cxhswfveunmf.us-west-1.rds.amazonaws.com:3306/Hotel_Reservation"; // table details
         String username = "admin"; // MySQL credentials
         String password = "01NoShotFlip$";
@@ -207,7 +208,7 @@ public class Database {
         
         //Statement st = con.createStatement();
         PreparedStatement preparedStmt = con.prepareStatement(query);
-        preparedStmt.setInt (1, roomNum);
+        preparedStmt.setInt (1, tableNum);
         preparedStmt.executeUpdate();
         con.close(); // close connection  
     }
@@ -258,19 +259,19 @@ public class Database {
     /**
      * Adds a booking in the database with the provided details.
      *
-     * @param number The room number associated with the booking.
-     * @param startDate The start date of the booking.
-     * @param endDate The end date of the booking.
+     * @param number The table number associated with the booking.
+     * @param Date The start date of the booking.
+     * @param time The end date of the booking.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */
-    static void addBooking (int number , String startDate , String endDate) throws ClassNotFoundException, SQLException{
+    static void addBooking (int number , String Date , String time) throws ClassNotFoundException, SQLException{
        
         String url = "jdbc:mysql://restaurant-database.cxhswfveunmf.us-west-1.rds.amazonaws.com:3306/Hotel_Reservation"; // table details
         String username = "admin"; // MySQL credentials
         String password = "01NoShotFlip$";
          String query
-            = "insert into Booking(TableNum,Start_Date,End_Date) "+"values (?, ?, ? )"; // query to be run
+            = "insert into Booking(TableNum,Date,Time) "+"values (?, ?, ? )"; // query to be run
 
          Class.forName(
             "com.mysql.cj.jdbc.Driver"); // Driver name
@@ -278,17 +279,17 @@ public class Database {
             url, username, password);
         PreparedStatement preparedStmt = con.prepareStatement(query);
         preparedStmt.setInt (1, number);
-        preparedStmt.setString (2, startDate);
-        preparedStmt.setString (3, endDate);
+        preparedStmt.setString (2, Date);
+        preparedStmt.setString (3, time);
         preparedStmt.execute();
         con.close(); // close connection 
 
     }
 
     /**
-     * Deletes booking details associated with the provided room number.
+     * Deletes booking details associated with the provided table number.
      *
-     * @param tableNum The room number of the booking to be deleted.
+     * @param tableNum The table number of the booking to be deleted.
      * @throws ClassNotFoundException if the database driver is not found.
      * @throws SQLException if there's any database access error.
      */

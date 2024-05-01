@@ -17,7 +17,7 @@ import java.util.Date;
  * @author 
  * @version 1.0
  * <p>
- * Date of Creation: 28 July 2023
+
  * </p>
  */
 
@@ -35,12 +35,11 @@ public class GUI {
      /** The check-in date string. */
      public static String checkIn1String;
      
-     /** The check-out date string. */
-     public static String checkOut1String;
+   
 
      public static String time1;
      
-     /** The type of the room reserved by the guest. */
+     /** The type of the table reserved by the guest. */
      public static String tableType1String;
      
      /** Any additional message or notes associated with the reservation. */
@@ -78,12 +77,12 @@ public class GUI {
         Tables r10 = new Tables(10 ,"Party" , true);
         
         /**
-         * Aggregate all initialized rooms into an array to represent them collectively.
+         * Aggregate all initialized Tables into an array to represent them collectively.
          */
         // Create an array of Tables to add to a Table object
         Tables[] tables = {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10};
         /**
-         * Create a Restaurant object, passing in the collection of initialized rooms.
+         * Create a Restaurant object, passing in the collection of initialized Tables.
          */
         // Create Restaurant element
         Restaurant H = new Restaurant(tables);
@@ -117,7 +116,7 @@ public class GUI {
 
 
         /**
-         * Initialization and setup of GUI components for the hotel application.
+         * Initialization and setup of GUI components for the restaurant application.
          */
 
         // Nested button panel for housing top navigation buttons.
@@ -132,8 +131,8 @@ public class GUI {
          */
         // Create buttons
         JButton homeButton = buttonStyling("Home", Color.BLUE);
-        JButton roomsButton = buttonStyling("Tables", Color.GREEN);
-        JButton amenitiesButton = buttonStyling("Food", Color.CYAN);
+        JButton tablesButton = buttonStyling("Tables", Color.GREEN);
+        JButton amenitiesButton = buttonStyling("Menu", Color.CYAN);
         JButton bookingButton = buttonStyling("Reserve now", Color.RED);
         JButton cancelReservationButton = buttonStyling("Cancel Reservation",Color.MAGENTA);
         JButton adminButton = buttonStyling("Admin",Color.ORANGE);
@@ -144,7 +143,7 @@ public class GUI {
         // scrollable panels
         JScrollPane homeScrollPane = new JScrollPane(homePanel);
         JScrollPane amenitiesScrollPane = new JScrollPane(amenitiesPanel);
-        JScrollPane RoomsScrollPane = new JScrollPane(tablesPanel); 
+        JScrollPane TablesScrollPane = new JScrollPane(tablesPanel); 
         JScrollPane BookingScrollPane = new JScrollPane(bookingPanel);
 
         /**
@@ -152,16 +151,16 @@ public class GUI {
          */
         // Add buttons to button panel
         buttonPanel.add(homeButton);
-        buttonPanel.add(roomsButton);
+        buttonPanel.add(tablesButton);
         buttonPanel.add(amenitiesButton);
         buttonPanel.add (cancelReservationButton);
         buttonPanel.add(adminButton);
         
         /**
-         * Load an image representing the hotel and create a label to display it within the GUI.
+         * Load an image representing the restaurant and create a label to display it within the GUI.
          */
 
-        // Load the hotel image and create a JLabel for the image
+        // Load the restaurant image and create a JLabel for the image
         ImageIcon imageIcon = new ImageIcon("src/Restaurant/images/r2.png");
         JLabel imageLabel = new JLabel(imageIcon);
        
@@ -174,7 +173,7 @@ public class GUI {
         Color myColor2 = new Color(251, 241, 241); 
         
         /**
-         * GUI components related to the footer section of the hotel application.
+         * GUI components related to the footer section of the restaurant application.
          */
 
         /**
@@ -214,7 +213,7 @@ public class GUI {
         t1.setBounds(114,670,511,411);
 
         /**
-         * Description label detailing the charm and allure of Hotel Toad.
+         * Description label detailing the charm and allure of Restaurant.
          */
         JLabel t2 = new JLabel("<html>Embracing the lovely views of the beach at  Flippers and Dippers<br>have your favorite at our restaurant.\r\n" + //
                 "<br>Flippers and Dippers offers wonderful view of the Pafice ocean.\r\n" + //
@@ -235,7 +234,7 @@ public class GUI {
         t3.setBounds(624,680,511,411);
 
         /**
-         * Address label displaying the location of Hotel Toad.
+         * Address label displaying the location of Restaurant.
          */
         JLabel t4 = new JLabel("100 Santa Monica , Santa Monica, CA 90401\n" + //
                 "");
@@ -245,7 +244,7 @@ public class GUI {
 
        
         /**
-         * GUI components and styling related to the "Contact Us" section, logos, and room types of the hotel application.
+         * GUI components and styling related to the "Contact Us" section, logos, and table types of the restaurant application.
          */
 
         /**
@@ -257,7 +256,7 @@ public class GUI {
         t5.setBounds(1074,680,511,411);
 
         /**
-         * Label displaying the email and phone contact details of the hotel.
+         * Label displaying the email and phone contact details of the restaurant.
          */
         JLabel t6 = new JLabel("<html> Email: FlippersandDippers@gmail.com <br><br>Phone: 818-555-5555 </html>");
         t6.setFont(ttt);
@@ -316,10 +315,10 @@ public class GUI {
         EmptyBorder a = new EmptyBorder(0, 33, 0, 74);
         bookingButton.setBorder(a);
     
-        // Rooms panel start
+        // Tables panel start
         
        /**
-         * Loading images for different room types.
+         * Loading images for different Table types.
          */
         // Load images
         ImageIcon P1 = new ImageIcon("src/Restaurant/images/sittbybar2.png");
@@ -328,7 +327,7 @@ public class GUI {
         ImageIcon P4 = new ImageIcon("src/Restaurant/images/party.png");
 
        /**
-         * Label for "Single Queen" title and its styling.
+         * Label for "Sit By the Bar" title and its styling.
          */
         // label for title/ title styling
         JLabel P1LabelT = new JLabel("Sit By the Bar");
@@ -427,9 +426,8 @@ public class GUI {
          * Padding for table type images.
          */
          // Adds padding through an empty border
-        EmptyBorder paddingBorder = new EmptyBorder(122, 140, 0, 1244);   
-        EmptyBorder paddingBorder1 = new EmptyBorder(244, 740, 0, 0);
-        EmptyBorder paddingBorder4 = new EmptyBorder(244, 740, 110, 0);   
+        EmptyBorder paddingBorder = new EmptyBorder(122, 240, 0, 1244);   
+        
 
         /**
          * Configures the borders for various labels.
@@ -441,8 +439,7 @@ public class GUI {
         P1Label.setBorder(paddingBorder);
         P3Label.setBorder(paddingBorder);     
 
-        P2Label.setBorder(paddingBorder1);    
-        P4Label.setBorder(paddingBorder4);         
+         
         /**
          * Adds images and text components to Panel.
          * <p>
@@ -468,13 +465,13 @@ public class GUI {
         P1Panel.add(P1Label);
         P3Panel.add(P3Label);
         /**
-         * Adds the nested panels P1Panel and P3Panel to the main panel called roomsPanel.
+         * Adds the nested panels P1Panel and P3Panel to the main panel called TablesPanel.
          */
         // add nested panels to main panel
         tablesPanel.add(P1Panel, BorderLayout.CENTER);
         tablesPanel.add(P3Panel, BorderLayout.SOUTH);
 
-         // Rooms panel end
+         // Tables panel end
 
 
     // amenities tab start
@@ -485,117 +482,16 @@ public class GUI {
          */
 
         // Load images
-        ImageIcon P1a = new ImageIcon("src/Restaurant/images/pool.png");
-        ImageIcon P2a = new ImageIcon("src/Restaurant/images/breakfast.jpg");
-        ImageIcon P3a = new ImageIcon("src/Restaurant/images/fitnessRoom.png");
-        ImageIcon P4a = new ImageIcon("src/Restaurant/images/golf.png");
+        ImageIcon P1a = new ImageIcon("src/Restaurant/images/menu2.png");
+       
 
-        /**
-         * Configures a label, possibly for showing information about an outdoor pool.
-         * <p>
-         * This sets up the text, font, color, and positioning for the label.
-         * </p>
-         */
-        JLabel P1aLabelT = new JLabel("<html>Outdoor Pool<br> & Deck</html>");
-        P1aLabelT.setFont(f3);
-        P1aLabelT.setForeground(Color.GRAY);
-        P1aLabelT.setBounds(1124,312,511,111);
-
-        /**
-         * Represents a label displaying a detailed description of the outdoor pool.
-         * <p>
-         * The label presents the facilities and ambiance of the heated outdoor pool 
-         * where guests can relax and enjoy.
-         * </p>
-         */
-        JLabel P1aLabelTT = new JLabel("<html> Take a dip in our heated outdoor pool and enjoy\r\n" + //
-                "your time poolside with a drink. Curl up with your favorite\r\n" + //
-                        "\r\n" + //
-                "book, cool off after a busy day, and soak up the sun.\r\n" + //
-                        "</html>");
-        P1aLabelTT.setFont(f3T);
-        P1aLabelTT.setForeground(Color.BLACK);
-        P1aLabelTT.setBounds(944,162,711,711);
-
-        /**
-         * Represents a label highlighting the offering of a continental breakfast.
-         */
-        JLabel P2aLabelT = new JLabel("<html>Continental<br>Breakfast</html>");
-        P2aLabelT.setFont(f3);
-        P2aLabelT.setForeground(Color.GRAY);
-        P2aLabelT.setBounds(444,1062,511,111);
-
-        /**
-         * Represents a label displaying a detailed description of the complimentary continental breakfast.
-         * <p>
-         * The label describes the various food items offered in the breakfast to entice the guests.
-         * </p>
-         */
-        JLabel P3aLabelTT = new JLabel("<html> Enjoy our complimentary continental breakfast, featuring\r\n" + //
-                "\r\n" + 
-                "freshly baked pastries, a variety of bread, healthy fruits\r\n" + //
-                "and yogurt. A perfect way to kickstart your morning.\r\n" + //
-                      "</html>");
-        P3aLabelTT.setFont(f3T);
-        P3aLabelTT.setForeground(Color.BLACK);
-        P3aLabelTT.setBounds(244,922,711,711);
-
-        /**
-         * Represents a label highlighting the availability of a fitness center.
-         */
-        JLabel P3aLabelT = new JLabel("Fitness Center");
-        P3aLabelT.setFont(f3);
-        P3aLabelT.setForeground(Color.GRAY);
-        P3aLabelT.setBounds(1114,242,511,111);
-
-
-        /**
-         * Represents a label displaying a detailed description of the modern fitness center.
-         * <p>
-         * The label showcases the variety of exercise options available to cater to all fitness levels.
-         * </p>
-         */
-        JLabel P4aLabelTT = new JLabel("<html> Jumpstart your day at our modern fitness center. Enjoy a wide range\r\n" + //
-                "\r\n" + //
-                "of exercise options suitable for all fitness levels. Discover\r\n" + //
-                "moments of leisure in our versatile yoga.\r\n" + //
-                 "</html>");
-        P4aLabelTT.setFont(f3T);
-        P4aLabelTT.setForeground(Color.BLACK);
-        P4aLabelTT.setBounds(944,82,711,711);
-
-        /**
-         * Represents a label highlighting the availability of a golf course.
-         */
-        JLabel P4aLabelT = new JLabel("Golf Course");
-        P4aLabelT.setFont(f3);
-        P4aLabelT.setForeground(Color.GRAY);
-        P4aLabelT.setBounds(444,1122,511,111);
-
-        /**
-         * Represents a label displaying a detailed description of the golf course.
-         * <p>
-         * The label presents the exquisiteness of the golf course, describing its challenges 
-         * and pristine conditions, aiming to attract golf enthusiasts.
-         * </p>
-         */
-        JLabel P5aLabelTT = new JLabel("<html> Embark on an unforgettable golfing journey at our stunning course\r\n" + //
-                "\r\n" + //
-                "Delight in diverse challenges catering to golfers of all levels. from\r\n" + //
-                "well-groomed fairways to immaculate greens, it's a golfer's paradise.\r\n" + //
-                 "</html>");
-        P5aLabelTT.setFont(f3T);
-        P5aLabelTT.setForeground(Color.BLACK);
-        P5aLabelTT.setBounds(244,972,711,711);
-
+      
         /**
          * Initializes labels to hold images for various amenities.
          */
         // img labels
         JLabel P1aLabel = new JLabel(P1a);
-        JLabel P2aLabel = new JLabel(P2a);
-        JLabel P3aLabel = new JLabel(P3a);
-        JLabel P4aLabel = new JLabel(P4a);
+    
 
 
          /**
@@ -604,31 +500,11 @@ public class GUI {
          */
         // padding
         P1aLabel.setBorder(paddingBorder);
-        P3aLabel.setBorder(paddingBorder);     
-
-        P2aLabel.setBorder(paddingBorder1);    
-        P4aLabel.setBorder(paddingBorder4);         
-     
-     // add elements to nested panels   
-        P1aPanel.add(P1aLabelT); 
-        P1aPanel.add(P1aLabelTT);
-        P1aPanel.add(P3aLabelTT);
-
-        P3aPanel.add(P4aLabelTT);
-        P3aPanel.add(P5aLabelTT);
-
-        P1aPanel.add(P2aLabel, BorderLayout.SOUTH);
-
-        P1aPanel.add(P2aLabelT); 
-
-
-        P3aPanel.add(P4aLabel, BorderLayout.SOUTH);
-        P3aPanel.add(P3aLabelT);
-        P3aPanel.add(P4aLabelT);
+        
 
 
         P1aPanel.add(P1aLabel);
-        P3aPanel.add(P3aLabel);
+    
 
         /**
          * Adds the P1aPanel and P3aPanel to the main amenities panel.
@@ -648,8 +524,8 @@ public class GUI {
         // Add panels to the main panel with CardLayout
         mainPanel.add(homeScrollPane, "Home");
         mainPanel.add(BookingScrollPane, "Booking");
-        mainPanel.add(RoomsScrollPane, "Rooms"); 
-        mainPanel.add(amenitiesScrollPane, "Amenities");
+        mainPanel.add(TablesScrollPane, "Tables"); 
+        mainPanel.add(amenitiesScrollPane, "Menu");
        
         /**
          * Adds the main panel to the main application frame.
@@ -689,11 +565,11 @@ public class GUI {
         });
 
         /**
-         * Action listener for roomsButton.
-         * On clicking the roomsButton, the view is switched to show the rooms panel.
-         * Styling adjustments are also made to the booking button and logoAndButtonPanel is added to the roomsPanel.
+         * Action listener for tablesButton.
+         * On clicking the tablesButton, the view is switched to show the tables panel.
+         * Styling adjustments are also made to the booking button and logoAndButtonPanel is added to the tablesPanel.
          */
-        roomsButton.addActionListener(new ActionListener() {
+        tablesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CardLayout cardLayout = (CardLayout) mainPanel.getLayout();
                 // add buttonPanel to booking panel
@@ -701,8 +577,8 @@ public class GUI {
         EmptyBorder a = new EmptyBorder(0, 33, 0, 226);
         bookingButton.setBorder(a);
         tablesPanel.add(logoAndButtonPanel, BorderLayout.NORTH);
-                // Switching view to show rooms panel
-                 cardLayout.show(mainPanel, "Rooms");
+                // Switching view to show tables panel
+                 cardLayout.show(mainPanel, "Tables");
 
             }
         });          
@@ -731,9 +607,9 @@ public class GUI {
         frame.setVisible(true);
     
         /**
-         * Creates an administrative frame for hotel management purposes.
+         * Creates an administrative frame for restaurant management purposes.
          */
-        JFrame adminFrame = new JFrame("Hotel Toad GUI");
+        JFrame adminFrame = new JFrame("Restaurant GUI");
         adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         adminFrame.setSize(1280, 720);
 
@@ -797,33 +673,33 @@ public class GUI {
         /**
          * Create and initialize the adminView frame that displays various admin views.
          */
-        JFrame adminView = new JFrame("Hotel Toad GUI");
+        JFrame adminView = new JFrame("Restaurant GUI");
         JTable customerDetailsJTable = new JTable();
-        JTable roomAvJTable = new JTable();
+        JTable tableAvJTable = new JTable();
         JTable bookingJTable = new JTable();
         adminView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         adminView.setSize(1280, 720);
         JPanel adminViewer = new JPanel(new CardLayout());
         /**
-         * Buttons to view customer details, room availability, and booking details.
+         * Buttons to view customer details, table availability, and booking details.
          */
         JButton checkCustomerDetails  = new JButton("Check Customer Details");
-        JButton roomAvailability  = new JButton("Rooms ");
+        JButton tableAvailability  = new JButton("Tables ");
         JButton bookingDetails  = new JButton("Booking Details");
         JButton goBack2  = new JButton("Go Back");
         
         // Set up the admin viewer layout and add components
         adminViewer.setLayout(new BorderLayout());
         adminView.add(new JScrollPane(customerDetailsJTable), BorderLayout.EAST);
-        adminView.add(new JScrollPane(roomAvJTable), BorderLayout.SOUTH);
+        adminView.add(new JScrollPane(tableAvJTable), BorderLayout.SOUTH);
         adminView.add(new JScrollPane(bookingJTable), BorderLayout.WEST);
         // Create a button panel and add buttons to it
         JPanel buttonPanel3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         checkCustomerDetails.setBounds(10, 0, 200, 30);
-        roomAvailability.setBounds(300, 0, 200, 30);
+        tableAvailability.setBounds(300, 0, 200, 30);
         bookingDetails.setBounds(600, 0, 200, 30);
         buttonPanel3.add(checkCustomerDetails);
-        buttonPanel3.add(roomAvailability);
+        buttonPanel3.add(tableAvailability);
         buttonPanel3.add(bookingDetails);
         adminViewer.add(buttonPanel3);
         buttonPanel3.add(goBack2);
@@ -888,19 +764,19 @@ public class GUI {
         });
 
         /**
-         * Action listener for the roomAvailability button.
-         * On button click, retrieves room availability details from the database and sets the data to the roomAvJTable.
+         * Action listener for the tableAvailability button.
+         * On button click, retrieves table availability details from the database and sets the data to the tableAvJTable.
          */
-        roomAvailability.addActionListener(new ActionListener() {
+        tableAvailability.addActionListener(new ActionListener() {
         
         public void actionPerformed(ActionEvent e){
                 try {
-                    DefaultTableModel model = Database.getRoomAvailabilityModel();
+                    DefaultTableModel model = Database.getTableAvailabilityModel();
                      // Print model to console to verify
                
 
                         // Set Model to JTable
-                    roomAvJTable.setModel(model);
+                    tableAvJTable.setModel(model);
                 } catch (ClassNotFoundException | SQLException ex) {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(frame, "An error occurred while fetching customer details.");
@@ -937,7 +813,7 @@ public class GUI {
         /**
          * Initialize the customerViewFrame, set its properties, and add components for capturing customer booking details.
          */
-        JFrame customerViewFrame = new JFrame("Hotel Toad GUI");
+        JFrame customerViewFrame = new JFrame("Restaurant GUI");
         customerViewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         customerViewFrame.setSize(1500, 1000);
 
@@ -945,9 +821,9 @@ public class GUI {
         JButton bookNow = new JButton("Reserve now");
         JButton goBack3 = new JButton("Go Back");
         customerPanel.setLayout(new FlowLayout());
-        JTable roomAv2JTable = new JTable();
+        JTable tableAv2JTable = new JTable();
         JPanel buttonPanel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JTextField firstName, lastName, email, numAdults, numChildren,time;
+        JTextField firstName, lastName, email, time;
         JDateChooser checkInDate, checkOutDate;
       
         JComboBox<String> tableType;
@@ -968,17 +844,9 @@ public class GUI {
         email.setColumns(25);
         customerPanel.add(email);
 
-        customerPanel.add(new JLabel("Number of Adults: "));
-        numAdults = new JTextField();
-        numAdults.setColumns(7);
-        customerPanel.add(numAdults);
+       
 
-        customerPanel.add(new JLabel("Number of Children: "));
-        numChildren = new JTextField();
-        numChildren.setColumns(7);
-        customerPanel.add(numChildren);
-
-        customerPanel.add(new JLabel("Check-In Date: "));
+        customerPanel.add(new JLabel("Date: "));
         checkInDate = new JDateChooser();
         checkInDate.setPreferredSize(new Dimension(150,25));
         Date today = new Date();
@@ -993,7 +861,7 @@ public class GUI {
         checkOutDate.setMinSelectableDate(new Date(today.getTime() + (1000 * 60 * 60 * 24)));
         customerPanel.add(time);
 
-        customerPanel.add(new JLabel("Room Type: "));
+        customerPanel.add(new JLabel("Table Type: "));
         tableType = new JComboBox<>(new String[]{"Sit by the bar", "Table for two", "Group", "Party"});
         customerPanel.add(tableType);
 
@@ -1001,7 +869,7 @@ public class GUI {
         message = new JTextArea(3, 50);
         customerPanel.add(message);
         
-        customerViewFrame.add(new JScrollPane(roomAv2JTable), BorderLayout.SOUTH);
+        customerViewFrame.add(new JScrollPane(tableAv2JTable), BorderLayout.SOUTH);
         buttonPanel4.add(bookNow);
         buttonPanel4.add(goBack3);
         customerPanel.add(buttonPanel4);
@@ -1009,16 +877,16 @@ public class GUI {
 
         /**
          * Action listener for the bookingButton.
-         * On button click, retrieves room availability details from the database and displays the customer booking form.
+         * On button click, retrieves table availability details from the database and displays the customer booking form.
          */
         bookingButton.addActionListener(new ActionListener()  {
         // Code to handle admin actions
         public void actionPerformed(ActionEvent e){
             try {
-            DefaultTableModel model = Database.getRoomAvailabilityModel();
+            DefaultTableModel model = Database.getTableAvailabilityModel();
 
                 // Set Model to JTable
-            roomAv2JTable.setModel(model);
+            tableAv2JTable.setModel(model);
             } catch (ClassNotFoundException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -1045,7 +913,7 @@ public class GUI {
             // Check if all necessary fields are filled out by user
             // Validate that all required fields are filled out by user
             if (firstName.getText().isEmpty() || lastName.getText().isEmpty() || email.getText().isEmpty()
-                    || numAdults.getText().isEmpty() || numChildren.getText().isEmpty()
+                    
                     || checkInDate.getDate() == null 
                     || tableType.getSelectedItem().toString().isEmpty()){
                 // If not, show a message dialog prompting the user to fill all fields
@@ -1055,8 +923,7 @@ public class GUI {
                 firstName.setText("");
                 lastName.setText("");
                 email.setText("");
-                numAdults.setText("");
-                numChildren.setText("");
+                
                 checkInDate.setDate(null);
                 checkOutDate.setDate(null);
                 tableType.setSelectedIndex(-1);
@@ -1064,15 +931,14 @@ public class GUI {
 
             } else {
                 String checkIn = new SimpleDateFormat("MM/dd/yyyy").format(checkInDate.getDate());
-                //String checkOut = new SimpleDateFormat("MM/dd/yyyy").format(checkOutDate.getDate());
+               
                
 
                 tableType1String = tableType.getSelectedItem().toString();
-                //checkOut1String = checkOut;
+                
                 checkIn1String = checkIn;
                 time1 = time.getText();
-                children = numChildren.getText();
-                adults = numAdults.getText();
+                
                 email1String = email.getText();
                 firstName1String = firstName.getText();
                 lastName1String = lastName.getText();
@@ -1103,14 +969,14 @@ public class GUI {
                     throw new RuntimeException(ex);
                 }
                 try {
-                    String message = Restaurant.reserveRoom(G, tableType1String, checkIn1String, time1, email1String, bill);
+                    String message = Restaurant.reserveTable(G, tableType1String, checkIn1String, time1, email1String, bill);
                     if (message == null){
-                        JOptionPane.showMessageDialog(frame, "Sorry, room not available!");
+                        JOptionPane.showMessageDialog(frame, "Sorry, tables not available!");
                         customerViewFrame.add(customerPanel);
                         customerViewFrame.setVisible(true);
                     }
                     else if (message != null){
-                        Restaurant.reserveRoom1(G, tableType1String, checkIn1String, time1, email1String);
+                        Restaurant.reserveTable1(G, tableType1String, checkIn1String, time1, email1String,message1String);
                         JOptionPane.showMessageDialog(frame, message);
                         customerViewFrame.add(customerPanel);
                         customerViewFrame.setVisible(true);
@@ -1126,18 +992,17 @@ public class GUI {
                 firstName.setText("");
                 lastName.setText("");
                 email.setText("");
-                numAdults.setText("");
-                numChildren.setText("");
+               
                 checkInDate.setDate(null);
                 checkOutDate.setDate(null);
                 tableType.setSelectedIndex(-1);
                 message.setText("");
 
                 try {
-                    DefaultTableModel model = Database.getRoomAvailabilityModel();
+                    DefaultTableModel model = Database.getTableAvailabilityModel();
 
                     // Set Model to JTable
-                    roomAv2JTable.setModel(model);
+                    tableAv2JTable.setModel(model);
                 } catch (ClassNotFoundException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
@@ -1170,28 +1035,28 @@ public class GUI {
 
           /**
          * Initializes and attaches an action listener to the cancelReservationButton.
-         * This action listener prompts the user to input their room number and attempts to cancel their reservation.
+         * This action listener prompts the user to input their table number and attempts to cancel their reservation.
          */
         cancelReservationButton.addActionListener(new ActionListener()  {
             // Code to handle admin actions
             public void actionPerformed(ActionEvent e){
-                // Prompt user for room number
-              String roomNum = JOptionPane.showInputDialog(frame,"Enter You're Table Number Please"); 
+                // Prompt user for table number
+              String tableNum = JOptionPane.showInputDialog(frame,"Enter You're Table Number Please"); 
 
-              // Validate the entered room number
-              if (roomNum != null && !roomNum.trim().isEmpty()) { 
-                // Check if roomNum is not empty after trimming whitespace
+              // Validate the entered table number
+              if (tableNum != null && !tableNum.trim().isEmpty()) { 
+                // Check if tableNum is not empty after trimming whitespace
                 try {
-                    tableNumber = Integer.parseInt(roomNum);
+                    tableNumber = Integer.parseInt(tableNum);
                 } catch (NumberFormatException e1) {
-                    JOptionPane.showMessageDialog(frame, "Invalid Room Number. Please enter a valid number.");
+                    JOptionPane.showMessageDialog(frame, "Invalid Table Number. Please enter a valid number.");
                 }
             } else {
-                JOptionPane.showMessageDialog(frame, "Please Enter A Room Number");
+                JOptionPane.showMessageDialog(frame, "Please Enter A Table Number");
             }
-             // Attempt to cancel room reservation using the room number and display the outcome to the user
+             // Attempt to cancel table reservation using the table number and display the outcome to the user
               try {
-                  String cancelMessage = Restaurant.cancelRoom(tableNumber);
+                  String cancelMessage = Restaurant.cancelTable(tableNumber);
                   JOptionPane.showMessageDialog(frame, cancelMessage);
                 } catch (ClassNotFoundException e1) {
                     // TODO Auto-generated catch block

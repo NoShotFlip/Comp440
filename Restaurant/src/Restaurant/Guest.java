@@ -2,10 +2,10 @@ package Restaurant;
 
 /**
  * Represents a guest with associated personal details.
- * @author Toad's Taskforce
+ * @author 
  * @version 1.0
  * <p>
- * Date of Creation: 28 July 2023
+
  * </p>
  *
  * This class provides functionalities to manage and retrieve guest details.
